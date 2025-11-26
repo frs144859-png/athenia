@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Formulario 2</title>
+</head>
+<body>
+<h1> Formulario que usa variedad de componentes </h1>
+<p> Llene este formulario para ayudarnos a mejorar nuestro sitio. </para>
+<!-- método de enviar información y la ubicación -->
+<!-- post el usuario no verá los datos después de enviar los datos (transparente) -->
+
+<form  method="post" action="http://misitio.com">
+	<!-- las entradas ocultas contienen información no visual q también se enviará -->
+	<input type="hidden" name="destinatario" value="misitio.com">
+	<!-- destinatario al q se enviará, asunto y un URL q el navegador abrirá después de -->
+	<!-- enviar el formulario -->
+	<input type="hidden" name="asunto" value="Formulario de realimentaci&oacute;n">
+	<input type="hidden" name="redirigir" value="principal.html">
+
+	<!-- inserta un campo de texto -->
+	<p> <label> Nombre:
+			<input  name="nombre" type="text" name="redirigir" size="25" >
+		</label>
+	</p>
+	<p> 
+		<!--<textarea> crea un cuadro de texto multilínea -->
+		<p> <label> Comentarios : <br>
+		<textarea name="Comentarios" rows="4" cols="36"> escriba aquí los comentarios.</textarea>
+		</label>
+ </p> 
+ <!-- inserta un password -->
+ <!-- cuadro enmascarado -->
+	
+	<p> <label> dirección de correo electrónico:
+			<input  name="email" type="password"  size="25" >
+		</label>
+	</p>
+	<p>
+		<strong> cosas que le gustaron </strong> <br>
+		<label> Diseño del sitio:
+		<input  name=" Cosas que gustaron "type="checkbox" value="Diseño">
+		</label>
+		<label> Vínculos:
+				<input  name=" Cosas que gustaron "type="checkbox" value="Vínculos">
+		</label>
+		<label> Facilidad de uso:
+				<input  name=" Cosas que gustaron "type="checkbox" value="Facilidad">
+		</label>
+		<label> Imágenes:
+				<input  name=" Cosas que gustaron "type="checkbox" value="Imágenes">
+		</label>
+		<label> Código fuente:
+				<input  name=" Cosas que gustaron "type="checkbox" value="Código">
+		</label>
+		
+	</p>
+	<!-- <input type="radio"> crea un botón de opción -->
+	<!-- botón de opción sólo se selecciona uno de un grupo -->
+	<p>
+		<strong> cómo llego a nuestro sitio</strong> <br>
+		<label> Motor de búsqueda
+		<input  name=" Como sitio "type="radio" value="Motor de búsqueda" >
+		</label>
+		<label> Vínculos desde otro sitio
+		<input  name=" Como sitio "type="radio" value="vinculo" checked>
+		</label>
+		<label> Sitio web
+		<input  name=" Como sitio "type="radio" value="algo.com" >
+		</label>
+		<label> Referencia en un libro
+		<input  name=" Como sitio "type="radio" value="libro" >
+		</label>
+		<label> otro
+		<input  name=" Como sitio "type="radio" value="otro" >
+		</label>
+	</p>
+	<p>
+		<label> Califique nuestro sitio:
+		<!-- <select> presenta una lista  -->
+	<!-- con opciones desplegable con opciones indicadas por las etiquetas <option>-->
+
+		<select  name=" Calificación">
+		<option selected >Sorprendente </option>
+		<option> 10 </option>
+		<option> 9 </option>
+		<option> 8 </option>
+		<option> 7 </option>
+		<option> 6 </option>
+		<option> 5 </option>
+		<option> 4 </option>
+		<option> 3 </option>
+		<option> 2 </option>
+		<option> 1 </option>
+		<option> Malo </option>
+		</select>
+		</label>
+		</p>
+		<p>
+		<input type="submit"value="enviar">
+		<input type="reset"value="Borrar">
+		</p>
+</form>
+</body>
+</html>

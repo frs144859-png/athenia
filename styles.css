@@ -1,0 +1,54 @@
+/* Estilos generales de la tabla */
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #E8D7F1; /* Fondo suave */
+    color: #1D0F30; /* Texto oscuro */
+    font-family: Arial, sans-serif;
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Encabezado de la tabla */
+thead {
+    background-color: #4A306D; /* Morado oscuro */
+    color: white;
+}
+
+/* Celdas de la tabla */
+th, td {
+    border: 2px solid #A167A5; /* Borde con tono intermedio */
+    padding: 12px;
+    text-align: center;
+}
+
+/* Fondo de filas alternas */
+tbody tr:nth-child(even) {
+    background-color: #D3BCCC; /* Morado claro */
+}
+
+/* Pie de tabla */
+tfoot {
+    background-color: #A167A5; /* Morado intermedio */
+    color: white;
+    font-weight: bold;
+}
+
+/* Imágenes en la tabla */
+img {
+    width: 80px;
+    height: auto;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del título de la tabla */
+caption {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #1D0F30;
+    text-transform: uppercase;
+}

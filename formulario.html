@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Compra - Athenia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FAF9F6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: white;
+            position: sticky;
+            top: 0;
+            width: 100vw;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ff9bb3;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
+        
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            position: relative;
+            font-size: 2.5rem;
+        }
+        
+        h1::after, h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #ff9bb3;
+            margin: 15px auto;
+        }
+        
+        /* Sección de Productos */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: #ff9bb3;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-selector button {
+            background: #e8cfc7;
+            border: none;
+            width: 30px;
+            height: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .quantity-selector input {
+            width: 40px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        
+        .add-to-cart {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background: #555;
+        }
+        
+        /* Carrito de Compras */
+        .cart-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+        
+        .cart-items {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .cart-items th, .cart-items td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .cart-items th {
+            background-color: #e8cfc7;
+            font-weight: 700;
+        }
+        
+        .cart-total {
+            text-align: right;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+        
+        /* Formulario de Envío */
+        .checkout-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .submit-btn {
+            background: #ff9bb3;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 30px auto 0;
+        }
+        
+        .submit-btn:hover {
+            background: #ff7a9e;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Encuesta de Satisfacción */
+        .survey-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+        
+        .survey-question {
+            margin-bottom: 25px;
+        }
+        
+        .survey-question p {
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .rating {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .rating input {
+            display: none;
+        }
+        
+        .rating label {
+            cursor: pointer;
+            padding: 5px 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .rating input:checked + label {
+            background: #ff9bb3;
+            color: white;
+        }
+        
+        .survey-result {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .happy {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .neutral {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .sad {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .emoji {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            
+            nav {
+                margin-top: 15px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">ATHENIA</div>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="index.html#nosotros">Nosotros</a>
+        <a href="index.html#tendencia">Tendencia</a>
+        <a href="index.html#galeria">Galería</a>
+        <a href="inventario.html">Inventario</a>
+        <a href="formulario.html">Comprar</a>
+        <a href="index.html#contacto">Contacto</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Formulario de Compra</h1>
+    
+    <!-- Sección de Productos (todos tus productos) -->
+    <div class="product-grid">
+        <!-- Producto 1 -->
+        <div class="product-card">
+            <img src="Imagenes/img1.jpg" alt="Base líquida" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">Base Líquida HD</h3>
+                <p>Base de larga duración con acabado natural</p>
+                <div class="product-price">$450 MXN</div>
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1" class="quantity">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart" data-id="1" data-name="Base Líquida HD" data-price="450" data-img="Imagenes/img1.jpg">Añadir</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Producto 2 -->
+        <div class="product-card">
+            <img src="Imagenes/labial.jpg" alt="Labial rojo" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">Labial Mate Rojo Pasión</h3>
+                <p>Labial de larga duración con pigmentación intensa</p>
+                <div class="product-price">$180 MXN</div>
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1" class="quantity">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart" data-id="2" data-name="Labial Mate Rojo Pasión" data-price="180" data-img="Imagenes/img2.jpg">Añadir</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Producto 3 -->
+        <div class="product-card">
+            <img src="Imagenes/sombras.jpg" alt="Paleta sombras" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">Paleta Sombras Nude</h3>
+                <p>12 tonos mate y brillo para looks naturales</p>
+                <div class="product-price">$520 MXN</div>
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1" class="quantity">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart" data-id="3" data-name="Paleta Sombras Nude" data-price="520" data-img="Imagenes/img3.jpg">Añadir</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Producto 4 -->
+        <div class="product-card">
+            <img src="Imagenes/brochas.jpg" alt="Brochas" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">Set Brochas Profesionales</h3>
+                <p>Set de 8 brochas sintéticas de alta calidad</p>
+                <div class="product-price">$680 MXN</div>
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1" class="quantity">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart" data-id="4" data-name="Set Brochas Profesionales" data-price="680" data-img="Imagenes/img5.jpg">Añadir</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Producto 5 -->
+        <div class="product-card">
+            <img src="Imagenes/delineador.jpg" alt="Delineador" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">Delineador Líquido Precision</h3>
+                <p>Punta fina para trazos precisos, resistente al agua</p>
+                <div class="product-price">$150 MXN</div>
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1" class="quantity">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart" data-id="5" data-name="Delineador Líquido Precision" data-price="150" data-img="Imagenes/img6.jpg">Añadir</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Producto 6 -->
+        <div class="product-card">
+            <img src="Imagenes/rubor.jpg" alt="Rubor" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">Rubor en Crema</h3>
+                <p>Textura cremosa que se funde con la piel</p>
+                <div class="product-price">$220 MXN</div>
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button class="decrease">-</button>
+                        <input type="number" value="1" min="1" class="quantity">
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="add-to-cart" data-id="6" data-name="Rubor en Crema" data-price="220" data-img="Imagenes/foto2.jpg">Añadir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Carrito de Compras -->
+    <div class="cart-container">
+        <h2>Tu Carrito de Compras</h2>
+        <table class="cart-items">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body">
+                <!-- Los productos del carrito se añadirán aquí dinámicamente -->
+            </tbody>
+        </table>
+        <div class="cart-total">
+            Total: $<span id="cart-total">0</span> MXN
+        </div>
+    </div>
+    
+    <!-- Formulario de Envío y Pago -->
+    <div class="checkout-form">
+        <h2>Información de Envío y Pago</h2>
+        
+    </div><form action="procesar_formulario.php" method="POST">
+    <div class="form-row">
+        <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" required placeholder="tu@correo.com">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" required placeholder="Tu dirección">
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="Tu número de teléfono">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="ciudad">Ciudad</label>
+            <input type="text" id="ciudad" name="ciudad" required placeholder="Tu ciudad">
+        </div>
+        <div class="form-group">
+            <label for="codigo_postal">Código Postal</label>
+            <input type="text" id="codigo_postal" name="codigo_postal" required placeholder="Código Postal">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="metodo_pago">Método de Pago</label>
+        <select id="metodo_pago" name="metodo_pago" required>
+            <option value="">Selecciona un método</option>
+            <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+            <option value="Paypal">Paypal</option>
+            <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Comentarios">Comentarios adicionales</label>
+        <textarea id="Comentarios" name="Comentarios" rows="3" placeholder="Escribe tus comentarios aquí..."></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Realizar Pedido</button>
+</form>
+    
+    <!-- Encuesta de Satisfacción -->
+    <div class="survey-container">
+        <h2>Encuesta de Satisfacción</h2>
+        <form id="survey-form">
+            <div class="survey-question">
+                <p>1. ¿Cómo calificarías la variedad de productos?</p>
+                <div class="rating">
+                    <input type="radio" id="q1-5" name="q1" value="5">
+                    <label for="q1-5">Excelente</label>
+                    <input type="radio" id="q1-4" name="q1" value="4">
+                    <label for="q1-4">Muy Bueno</label>
+                    <input type="radio" id="q1-3" name="q1" value="3">
+                    <label for="q1-3">Bueno</label>
+                    <input type="radio" id="q1-2" name="q1" value="2">
+                    <label for="q1-2">Regular</label>
+                    <input type="radio" id="q1-1" name="q1" value="1">
+                    <label for="q1-1">Malo</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <p>2. ¿Qué tan satisfecho/a estás con los precios?</p>
+                <div class="rating">
+                    <input type="radio" id="q2-5" name="q2" value="5">
+                    <label for="q2-5">Muy satisfecho</label>
+                    <input type="radio" id="q2-4" name="q2" value="4">
+                    <label for="q2-4">Satisfecho</label>
+                    <input type="radio" id="q2-3" name="q2" value="3">
+                    <label for="q2-3">Neutral</label>
+                    <input type="radio" id="q2-2" name="q2" value="2">
+                    <label for="q2-2">Insatisfecho</label>
+                    <input type="radio" id="q2-1" name="q2" value="1">
+                    <label for="q2-1">Muy insatisfecho</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <p>3. ¿Cómo evaluarías la facilidad de uso del sitio web?</p>
+                <div class="rating">
+                    <input type="radio" id="q3-5" name="q3" value="5">
+                    <label for="q3-5">Muy fácil</label>
+                    <input type="radio" id="q3-4" name="q3" value="4">
+                    <label for="q3-4">Fácil</label>
+                    <input type="radio" id="q3-3" name="q3" value="3">
+                    <label for="q3-3">Normal</label>
+                    <input type="radio" id="q3-2" name="q3" value="2">
+                    <label for="q3-2">Difícil</label>
+                    <input type="radio" id="q3-1" name="q3" value="1">
+                    <label for="q3-1">Muy difícil</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <p>4. ¿Recomendarías Athenia a tus amigos/familia?</p>
+                <div class="rating">
+                    <input type="radio" id="q4-5" name="q4" value="5">
+                    <label for="q4-5">Definitivamente sí</label>
+                    <input type="radio" id="q4-4" name="q4" value="4">
+                    <label for="q4-4">Probablemente sí</label>
+                    <input type="radio" id="q4-3" name="q4" value="3">
+                    <label for="q4-3">No estoy seguro</label>
+                    <input type="radio" id="q4-2" name="q4" value="2">
+                    <label for="q4-2">Probablemente no</label>
+                    <input type="radio" id="q4-1" name="q4" value="1">
+                    <label for="q4-1">Definitivamente no</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <p>5. ¿Cómo calificarías tu experiencia general con Athenia?</p>
+                <div class="rating">
+                    <input type="radio" id="q5-5" name="q5" value="5">
+                    <label for="q5-5">Excelente</label>
+                    <input type="radio" id="q5-4" name="q5" value="4">
+                    <label for="q5-4">Muy buena</label>
+                    <input type="radio" id="q5-3" name="q5" value="3">
+                    <label for="q5-3">Buena</label>
+                    <input type="radio" id="q5-2" name="q5" value="2">
+                    <label for="q5-2">Regular</label>
+                    <input type="radio" id="q5-1" name="q5" value="1">
+                    <label for="q5-1">Mala</label>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Enviar Encuesta</button>
+        </form>
+        <div id="survey-result" class="survey-result">
+            <div id="emoji" class="emoji"></div>
+            <h3 id="result-title"></h3>
+            <p id="result-text"></p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    ©️ 2025 Athenia | Todos los derechos reservados
+</footer>
+
+<script>
+    // Carrito de compras
+    let cart = [];
+    
+    // Función para actualizar el carrito en la interfaz
+    function updateCart() {
+        const cartBody = document.getElementById('cart-body');
+        const cartTotal = document.getElementById('cart-total');
+        
+        // Limpiar el carrito
+        cartBody.innerHTML = '';
+        
+        // Calcular total
+        let total = 0;
+        
+        // Añadir productos al carrito
+        cart.forEach(item => {
+            const subtotal = item.price * item.quantity;
+            total += subtotal;
+            
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>
+                    <img src="${item.img}" alt="${item.name}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 5px; margin-right: 10px;">
+                    ${item.name}
+                </td>
+                <td>$${item.price} MXN</td>
+                <td>${item.quantity}</td>
+                <td>$${subtotal} MXN</td>
+                <td><button class="remove-item" data-id="${item.id}">Eliminar</button></td>
+            `;
+            cartBody.appendChild(row);
+        });
+        
+        // Actualizar total
+        cartTotal.textContent = total;
+        
+        // Añadir event listeners a los botones de eliminar
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                removeFromCart(id);
+            });
+        });
+    }
+    
+    // Función para añadir producto al carrito
+    function addToCart(id, name, price, img, quantity) {
+        // Verificar si el producto ya está en el carrito
+        const existingItem = cart.find(item => item.id === id);
+        
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({ id, name, price, img, quantity });
+        }
+        
+        updateCart();
+    }
+    
+    // Función para eliminar producto del carrito
+    function removeFromCart(id) {
+        cart = cart.filter(item => item.id !== id);
+        updateCart();
+    }
+    
+    // Event listeners para los botones de añadir al carrito
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            const name = this.getAttribute('data-name');
+            const price = parseFloat(this.getAttribute('data-price'));
+            const img = this.getAttribute('data-img');
+            const quantity = parseInt(this.closest('.product-actions').querySelector('.quantity').value);
+            
+            addToCart(id, name, price, img, quantity);
+            
+            // Mostrar notificación
+            alert(`Se ha añadido ${quantity} ${name} al carrito`);
+        });
+    });
+    
+    // Event listeners para los selectores de cantidad
+    document.querySelectorAll('.quantity-selector').forEach(selector => {
+        const decrease = selector.querySelector('.decrease');
+        const increase = selector.querySelector('.increase');
+        const input = selector.querySelector('.quantity');
+        
+        decrease.addEventListener('click', function(e) {
+            e.preventDefault();
+            let value = parseInt(input.value);
+            if (value > 1) {
+                input.value = value - 1;
+            }
+        });
+        
+        increase.addEventListener('click', function(e) {
+            e.preventDefault();
+            let value = parseInt(input.value);
+            input.value = value + 1;
+        });
+    });
+    
+    // Encuesta de satisfacción
+    document.getElementById('survey-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Calcular puntuación
+        let score = 0;
+        const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+        
+        questions.forEach(q => {
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+            if (selected) {
+                score += parseInt(selected.value);
+            }
+        });
+        
+        // Mostrar resultados
+        const resultDiv = document.getElementById('survey-result');
+        const emojiDiv = document.getElementById('emoji');
+        const titleDiv = document.getElementById('result-title');
+        const textDiv = document.getElementById('result-text');
+        
+        resultDiv.style.display = 'block';
+        
+        if (score >= 20) {
+            resultDiv.className = 'survey-result happy';
+            emojiDiv.textContent = '😊';
+            titleDiv.textContent = '¡Excelente!';
+            textDiv.textContent = `Obtuviste ${score} de 25 puntos. ¡Gracias por tu excelente evaluación!`;
+        } else if (score >= 10) {
+            resultDiv.className = 'survey-result neutral';
+            emojiDiv.textContent = '😐';
+            titleDiv.textContent = '¡Bueno!';
+            textDiv.textContent = `Obtuviste ${score} de 25 puntos. Apreciamos tus comentarios y trabajaremos para mejorar.`;
+        } else {
+            resultDiv.className = 'survey-result sad';
+            emojiDiv.textContent = '😞';
+            titleDiv.textContent = '¡Lo sentimos!';
+            textDiv.textContent = `Obtuviste ${score} de 25 puntos. Lamentamos no haber cumplido tus expectativas.`;
+        }
+    });
+</script>
+</body>
+</html>

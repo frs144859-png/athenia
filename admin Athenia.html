@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athenia | Panel de Administración</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #FAF9F6;
+      color: #2E2E2E;
+    }
+
+    header {
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 60px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      color: #2E2E2E;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2E2E2E;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #b08d57;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 60px auto;
+      background: white;
+      padding: 40px 60px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #b08d57;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section {
+      margin-bottom: 60px;
+      border-top: 1px solid #eee;
+      padding-top: 40px;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 8px;
+      color: #444;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      background-color: #FAF9F6;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #b08d57;
+    }
+
+    textarea {
+      resize: none;
+      height: 90px;
+    }
+
+    button {
+      background-color: #b08d57;
+      color: white;
+      padding: 12px 35px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #a07e4e;
+    }
+
+    footer {
+      background: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      border-top: 1px solid #eee;
+      color: #555;
+      margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <h1>Panel Administrador | Athenia</h1>
+    <nav>
+      <a href="Plataforma Athenia.html">Regresar a la página principal</a>
+      <a href="admin Athenia.html">Administracion</a>
+      <a href="asesorias.html">Asesorías</a>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="container">
+
+    <h2>Gestión Administrativa</h2>
+
+    <!-- SECCIÓN CLIENTES -->
+    <div class="section" id="clientes">
+      <h3>Registro de Clientes</h3>
+      <form action="#" method="post">
+        <label>Nombre completo:</label>
+        <input type="text" name="nombre" placeholder="Ej. Fernanda Romero" required>
+
+        <label>Correo electrónico:</label>
+        <input type="email" name="correo" placeholder="Ej. cliente@correo.com" required>
+
+        <label>Teléfono:</label>
+        <input type="tel" name="telefono" placeholder="Ej. 55 1234 5678">
+
+        <label>Ciudad:</label>
+        <input type="text" name="ciudad" placeholder="Ciudad o Estado">
+
+        <label>Comentarios:</label>
+        <textarea name="Comentarios" placeholder="Notas o comentarios del cliente..."></textarea>
+
+        <button type="submit">Guardar Cliente</button>
+      </form>
+    </div>
+
+    <!-- SECCIÓN PRODUCTOS -->
+    <div class="section" id="productos">
+      <h3>Registro de Productos</h3>
+      <form action="#" method="post">
+        <label>Nombre del producto:</label>
+        <input type="text" name="nombre_producto" placeholder="Ej. Vestido beige" required>
+
+        <label>Precio:</label>
+        <input type="number" name="precio" step="0.01" placeholder="Ej. 1299" required>
+
+        <label>Descripción:</label>
+        <textarea name="descripcion" placeholder="Breve descripción del producto..."></textarea>
+
+        <label>Imagen (nombre del archivo):</label>
+        <input type="text" name="imagen" placeholder="Ej. vestido1.jpg">
+
+        <button type="submit">Guardar Producto</button>
+      </form>
+    </div>
+
+    <!-- SECCIÓN CITAS -->
+    <div class="section" id="citas">
+      <h3>Gestión de Asesorías / Citas</h3>
+      <form action="#" method="post">
+        <label>Nombre del cliente:</label>
+        <input type="text" name="nombre_cliente" placeholder="Ej. Fernanda Romero">
+
+        <label>Tipo de asesoría:</label>
+        <select name="tipo_asesoria">
+          <option value="">Selecciona una opción</option>
+          <option value="estilo">Diagnóstico de Estilo</option>
+          <option value="colorimetria">Colorimetría</option>
+          <option value="shopping">Shopping Asistido</option>
+          <option value="protocolo">Protocolo Empresarial</option>
+        </select>
+
+        <label>Fecha de la cita:</label>
+        <input type="date" name="fecha">
+
+        <label>Hora:</label>
+        <input type="time" name="hora">
+
+        <button type="submit">Guardar Cita</button>
+      </form>
+    </div>
+
+    <!-- SECCIÓN PAGOS -->
+    <div class="section" id="pagos">
+      <h3>Registro de Pagos / Pedidos</h3>
+      <form action="#" method="post">
+        <label>Nombre del cliente:</label>
+        <input type="text" name="nombre_cliente_pago" placeholder="Ej. Fernanda Romero">
+
+        <label>Método de pago:</label>
+        <select name="metodo_pago">
+          <option value="">Selecciona una opción</option>
+          <option value="tarjeta">Tarjeta</option>
+          <option value="transferencia">Transferencia</option>
+          <option value="efectivo">Efectivo</option>
+        </select>
+
+        <label>Total pagado:</label>
+        <input type="number" name="monto" step="0.01" placeholder="Ej. 1500.00">
+
+        <label>Comentarios:</label>
+        <textarea name="comentario_pago" placeholder="Notas adicionales..."></textarea>
+
+        <button type="submit">Guardar Pago</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PIE -->
+  <footer>
+    © 2025 Athenia | Panel de Administración
+  </footer>
+
+</body>
+</html>

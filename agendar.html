@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athenia | Agendar Asesoría</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #FAF9F6;
+      color: #2E2E2E;
+    }
+
+    header {
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 60px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      color: #2E2E2E;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2E2E2E;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #b08d57;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 80px auto;
+      background: white;
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      text-align: center;
+      color: #b08d57;
+      margin-bottom: 40px;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 8px;
+      color: #444;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      background-color: #FAF9F6;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #b08d57;
+    }
+
+    button {
+      background-color: #b08d57;
+      color: white;
+      padding: 12px 35px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: block;
+      margin: 0 auto;
+    }
+
+    button:hover {
+      background-color: #a07e4e;
+    }
+
+    footer {
+      background: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      border-top: 1px solid #eee;
+      color: #555;
+      margin-top: 80px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <h1>ATHENIA</h1>
+    <nav>
+      <a href="Plataforma Athenia.html">Inicio</a>
+      <a href="index.html">Tienda</a>
+      <a href="asesorias.html">Asesorías</a>
+    </nav>
+  </header>
+
+  <!-- FORMULARIO -->
+  <div class="container">
+    <h2>Agendar tu Asesoría</h2>
+    <form action="guardar_cita.php" method="post">
+      <label>Nombre completo:</label>
+      <input type="text" name="nombre_cliente" placeholder="Ej. Fernanda Romero" required>
+
+      <label>Correo electrónico:</label>
+      <input type="email" name="correo" placeholder="Ej. cliente@correo.com" required>
+
+      <label>Teléfono:</label>
+      <input type="tel" name="telefono" placeholder="Ej. 55 1234 5678">
+
+      <label>Tipo de asesoría:</label>
+      <select name="tipo_asesoria" required>
+        <option value="">Selecciona una opción</option>
+        <option value="estilo">Diagnóstico de Estilo</option>
+        <option value="colorimetria">Colorimetría</option>
+        <option value="shopping">Shopping Asistido</option>
+        <option value="protocolo">Protocolo Empresarial</option>
+      </select>
+
+      <label>Fecha:</label>
+      <input type="date" name="fecha" required>
+
+      <label>Hora:</label>
+      <input type="time" name="hora" required>
+
+      <label>Comentarios:</label>
+      <textarea name="comentarios" placeholder="Cuéntanos si tienes alguna preferencia o duda..."></textarea>
+
+      <button type="submit">Agendar Cita</button>
+    </form>
+  </div>
+
+  <!-- PIE -->
+  <footer>
+    © 2025 Athenia | Asesorías de Imagen Personal
+  </footer>
+
+</body>
+</html>

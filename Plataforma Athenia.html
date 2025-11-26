@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athenia | Asesoría de Imagen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* === ESTILO GENERAL === */
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #FAF9F6;
+      color: #2E2E2E;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 60px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      color: #2E2E2E;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2E2E2E;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #b08d57; /* dorado suave */
+    }
+
+    /* === SECCIÓN PRINCIPAL (HERO) === */
+    .hero {
+      background: url('imagenes/foto1.jpg') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 80px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .hero-content {
+      max-width: 500px;
+      text-align: right;
+    }
+
+    .hero h2 {
+      font-size: 70px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #b08d57;
+      color: white;
+      padding: 12px 35px;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #a07e4e;
+    }
+
+    /* === SECCIONES GENERALES === */
+    section {
+      padding: 80px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2E2E2E;
+      margin-bottom: 40px;
+      font-size: 36px;
+    }
+
+    /* === NOSOTROS === */
+    .nosotros-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nosotros-texto {
+      flex: 1;
+      font-size: 18px;
+    }
+
+    .nosotros-img {
+      flex: 1;
+      text-align: center;
+    }
+
+    .nosotros-img img {
+      max-width: 90%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* === SERVICIOS === */
+    .servicios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+
+    .servicio {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .servicio:hover {
+      transform: translateY(-5px);
+    }
+
+    .servicio h3 {
+      color: #b08d57;
+      margin-bottom: 10px;
+    }
+
+    .servicio p {
+      color: #555;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .servicio .btn {
+      font-size: 15px;
+      padding: 10px 25px;
+    }
+
+    /* === CONTACTO Y FOOTER === */
+    footer {
+      background: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      border-top: 1px solid #eee;
+      color: #555;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- ENCABEZADO -->
+  <header>
+    <h1>ATHENIA</h1>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- INICIO -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h2>Asesoría de Imagen</h2>
+      <p>Transforma tu estilo y resalta tu autenticidad con asesorías personalizadas, pensadas para ti.</p>
+      <button class="btn" onclick="location.href='index.html'">Ir a la Tienda</button>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros">
+    <h2>Nosotros</h2>
+    <div class="nosotros-content">
+      <div class="nosotros-texto">
+        <p><strong>Misión:</strong> Brindar un servicio integral de belleza y asesoría de imagen que combine estilismo, maquillaje, peinado y orientación en moda, complementado con la venta de productos de calidad, para que cada cliente proyecte seguridad y confianza.</p>
+        <p><strong>Visión:</strong> Ser la empresa líder en asesoría de imagen y belleza a nivel nacional, reconocida por la innovación, la excelencia en el servicio y el compromiso con realzar la autenticidad de cada cliente.</p>
+      </div>
+      <div class="nosotros-img">
+        <img src="imagenes/nosotros.jpg" alt="Equipo Athenia">
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <div class="servicios">
+      <div class="servicio">
+        <h3>Diagnóstico de Estilo</h3>
+        <p>Identificamos tu tipo de cuerpo, personalidad y estilo ideal para realzar tu imagen.</p>
+        <button class="btn" onclick="location.href='servicio1.html'">Ver más</button>
+      </div>
+      <div class="servicio">
+        <h3>Colorimetría</h3>
+        <p>Descubre los colores que armonizan con tu piel y resaltan tu belleza natural.</p>
+        <button class="btn" onclick="location.href='servicio2.html'">Ver más</button>
+      </div>
+      <div class="servicio">
+        <h3>Shopping Asistido</h3>
+        <p>Te acompañamos en tus compras para elegir prendas que te favorezcan y reflejen tu esencia.</p>
+        <button class="btn" onclick="location.href='servicio3.html'">Ver más</button>
+      </div>
+      <div class="servicio">
+        <h3>Protocolo Empresarial</h3>
+        <p>Aprende normas de etiqueta y presencia ejecutiva para tu desarrollo profesional.</p>
+        <button class="btn" onclick="location.href='servicio4.html'">Ver más</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p style="text-align:center;">Av. Insurgentes Sur 1234, Colonia Del Valle, CDMX</p>
+    <p style="text-align:center;">Síguenos en Instagram | Facebook | TikTok</p>
+  </section>
+
+  <!-- PIE -->
+  <footer>
+    © 2025 Athenia | Todos los derechos reservados
+  </footer>
+</body>
+</html>
